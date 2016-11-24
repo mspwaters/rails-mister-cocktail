@@ -1,0 +1,22 @@
+<div class="wrapper-grey">
+  <div class="container">
+    <h1 class="text-center"><%= @cocktail.name.upcase %></h1>
+    <h3>Ingredients:</h3>
+      <% @doses.each do |dose| %>
+        <ul style="list-style-type:none" class="list-inline">
+          <li>
+            <%= dose.description %>
+          </li>
+          <li>
+            <%= dose.ingredient.name.capitalize %>
+          </li>
+          <li>
+            <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <%= link_to "Add dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+  </div>
+</div>
